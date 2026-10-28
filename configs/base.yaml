@@ -1,0 +1,56 @@
+# Base Configuration for Adaptive-RAG Project
+# Roles: Member A (Deepak - Method), Member B (Ankit - Data), Member C (Utsav - Evaluation)
+
+project_name: "Adaptive-RAG"
+seed: 42
+
+paths:
+  raw_dev_data: "data/hotpotqa/hotpot_dev_distractor_v1.json"
+  raw_train_data: "data/hotpotqa/hotpot_train_v1.1.json"
+  splits_dir: "data/splits"
+  processed_dir: "data/processed"
+  faiss_index_path: "data/processed/faiss_index.bin"
+  results_raw_dir: "results/raw"
+  results_tables_dir: "results/tables"
+
+sample:
+  tiny_sample_size: 20
+  dev_sample_size: 100
+  train_sample_size: 200
+
+corpus:
+  hash_algorithm: "sha256"
+  doc_id_prefix: "doc_"
+  id_length: 12
+
+# Ollama and Generator Configuration
+# User note: Leave space for model name, user will provide/pull later.
+generator:
+  provider: "ollama"           # Options: "ollama", "extractive_fallback"
+  base_url: "http://localhost:11434"
+  # [SPACE FOR OLLAMA MODEL NAME] - Fill with your local model (e.g. "llama3.2", "mistral", "qwen2.5")
+  model_name: "qwen2.5:7b"
+  temperature: 0.0
+  max_tokens: 64
+  timeout: 60
+  fallback_to_extractive: true
+
+# Embeddings & FAISS Retrieval Configuration
+retrieval:
+  # Embedding provider: "sentence_transformers" or "ollama"
+  embedding_provider: "sentence_transformers"
+  sentence_transformer_model: "all-MiniLM-L6-v2"
+  ollama:
+    base_url: "http://localhost:11434"
+    # [SPACE FOR OLLAMA EMBEDDING MODEL NAME] - Fill with your local embedding model (e.g. "nomic-embed-text", "all-minilm")
+    model_name: "qwen3-embedding:4b"
+    timeout: 300
+  dimension: 384
+  metric: "inner_product"      # Cosine similarity when vectors are L2-normalized
+  top_k_default: 5
+  baseline_k_values: [3, 5, 10]
+
+controller:
+  tau: 0.3                     # Calibrated probability threshold for STOP vs MORE (Section 3 of Paper)
+  delta_threshold: 0.05        # Marginal F1 gain threshold for training oracle (F1@10 - F1@5)
+  feature_count: 7

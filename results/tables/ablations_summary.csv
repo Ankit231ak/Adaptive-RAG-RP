@@ -1,0 +1,17 @@
+ablation_id,f1,exact_match,avg_tokens,avg_docs,stop_count,more_count,stop_rate
+A0: Full V1 Features (Proposed GBDT),0.556,0.36,796.1,5.23,143,7,0.953
+A1: Drop Redundancy (No mean_redundancy),0.556,0.36,797.5,5.27,142,8,0.947
+A2: Drop Score/Margin (Only sim & redundancy),0.5475,0.3533,805.2,5.3,141,9,0.94
+A3: Score Features Only (Drop sim & redundancy),0.556,0.36,800.4,5.27,142,8,0.947
+A4.1: Controller = Logistic Regression,0.5417,0.36,1514.8,9.93,2,148,0.013
+A4.2: Controller = Random Forest,0.5418,0.36,1494.0,9.83,5,145,0.033
+A5: Delta Sensitivity (delta=0.0),0.5494,0.3533,804.3,5.27,142,8,0.947
+A5: Delta Sensitivity (delta=0.02),0.5568,0.36,797.2,5.23,143,7,0.953
+A5: Delta Sensitivity (delta=0.1),0.556,0.36,802.1,5.27,142,8,0.947
+A6: Tau Sensitivity (tau=0.1),0.5362,0.36,1167.6,7.8,66,84,0.44
+A6: Tau Sensitivity (tau=0.2),0.564,0.3667,836.9,5.53,134,16,0.893
+A6: Tau Sensitivity (tau=0.4),0.5535,0.3533,779.4,5.13,146,4,0.973
+A6: Tau Sensitivity (tau=0.5),0.5491,0.3533,775.2,5.1,147,3,0.98
+A6: Tau Sensitivity (tau=0.7),0.5405,0.3467,764.4,5.03,149,1,0.993
+A6: Tau Sensitivity (tau=0.9),0.5443,0.3467,761.8,5.0,150,0,1.0
+E5: Oracle Upper Bound (Perfect Hindsight),0.614,0.4067,865.8,5.73,128,22,0.853

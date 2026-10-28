@@ -1,0 +1,29 @@
+# Retrieval and Index Configuration
+# Owner: Member B (Ankit - Retrieval & Data)
+
+retriever:
+  dense_index_type: "FAISS_IndexFlatIP"
+  metric: "inner_product"
+  index_path: "data/processed/faiss_index.bin"
+  normalize_embeddings: true
+  max_candidates: 10
+
+embeddings:
+  # Provider can be "ollama" or "sentence_transformers"
+  provider: "ollama"
+  
+  # Local default SentenceTransformer
+  sentence_transformer_model: "all-MiniLM-L6-v2"
+  dimension: 384
+
+  # Ollama Embedding Configuration
+  ollama:
+    base_url: "http://localhost:11434"
+    # [SPACE FOR OLLAMA EMBEDDING MODEL NAME] (e.g. "nomic-embed-text", "all-minilm")
+    model_name: "qwen3-embedding:4b"
+    timeout: 60
+
+retrieval_depths:
+  k_initial: 5
+  k_expansion: 10
+  k_baseline_levels: [3, 5, 10]

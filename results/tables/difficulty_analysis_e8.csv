@@ -1,0 +1,4 @@
+question_type,count,f1,exact_match,stop_rate,more_rate
+bridge,122,0.5595,0.3689,0.9590,0.0410
+comparison,28,0.5409,0.3214,0.9286,0.0714
+all_test,150,0.5560,0.3600,0.9533,0.0467

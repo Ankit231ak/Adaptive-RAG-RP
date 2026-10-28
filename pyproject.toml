@@ -1,0 +1,21 @@
+[project]
+name = "adaptive-rag"
+version = "0.1.0"
+description = "Adaptive RAG - Evidence-State Retrieval Controller"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "torch>=2.0.0",
+    "transformers>=4.30.0",
+    "sentence-transformers>=2.2.0",
+    "scikit-learn>=1.2.0",
+    "faiss-cpu>=1.7.4",
+    "joblib>=1.2.0",
+    "pandas>=2.0.0",
+    "numpy>=1.23.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.65.0",
+    "requests>=2.28.0",
+    "matplotlib>=3.7.0",
+    "datasets>=2.14.0",
+]

@@ -1,0 +1,107 @@
+# ==============================================================================
+# Adaptive-RAG — Git Ignore Configuration
+# ==============================================================================
+
+# Python Bytecode & Caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Operating System & Editor Artifacts
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Testing, Coverage & Type Checking
+.pytest_cache/
+.mypy_cache/
+.pyright/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# Large Datasets & Binary Vector DB Files
+data/hotpotqa/
+data/**/*.bin
+data/**/*.npz
+data/processed/faiss_index.bin*
+data/processed/*.json
+*.parquet
+
+# Keep deterministic split definitions tracked
+!data/splits/*.json
+
+# Heavy Results & Raw Execution Logs
+results/raw/*.json
+results/raw/*.jsonl
+results/raw/*.pkl
+results/logs/*.log
+
+# Allow the trained controller checkpoint & essential baseline caches
+!results/raw/controller_router.pkl
+!results/raw/integrated_run_day6.json
+!results/raw/hello_world_run.json
+!results/raw/oracle_labels.json
+!results/raw/evidence_features_day6.jsonl
+!results/raw/b*_outputs.json
+
+# Always track all consolidated benchmark CSV tables
+!results/tables/*.csv
+
+# Archives & Temporary Files
+*.zip
+*.tar.gz
+*.tar
+*.rar
+*.7z
+*.tmp
+*.bak
+*.scratch
+
+# PDFs — Do not track or push any PDF files
+*.pdf
+reports/*.pdf
+reports/

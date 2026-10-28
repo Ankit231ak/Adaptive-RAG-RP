@@ -1,0 +1,49 @@
+# Experiments Matrix Configuration (Days 4 - 6)
+# Roles: Member A (Deepak - Method), Member B (Ankit - Data), Member C (Utsav - Evaluation)
+
+baselines:
+  - id: "B0_Direct_LLM"
+    name: "Direct LLM"
+    retrieval_k: 0
+    description: "Generates answer without any retrieval (parametric memory baseline)"
+  
+  - id: "B1_Fixed_RAG_3"
+    name: "Fixed RAG-3"
+    retrieval_k: 3
+    description: "Always retrieves top-3 passages"
+
+  - id: "B2_Fixed_RAG_5"
+    name: "Fixed RAG-5"
+    retrieval_k: 5
+    description: "Always retrieves top-5 passages (initial evidence budget)"
+
+  - id: "B3_Fixed_RAG_10"
+    name: "Fixed RAG-10"
+    retrieval_k: 10
+    description: "Always retrieves top-10 passages (full evidence budget / upper reference)"
+
+  - id: "B4_Score_Rule"
+    name: "Simple Score Rule"
+    retrieval_k: 5
+    threshold: 0.65
+    description: "Top-5 initial retrieval; retrieves next 5 if top score < threshold"
+
+evaluation:
+  metrics:
+    answer: ["exact_match", "f1", "precision", "recall"]
+    retrieval: ["recall_at_3", "recall_at_5", "recall_at_10", "mrr", "supporting_fact_coverage"]
+    efficiency: ["latency_sec", "input_tokens", "output_tokens", "retrieved_count"]
+  sample_size: 1000
+  random_seed: 42
+
+features_day6:
+  names:
+    - "top1_score"
+    - "mean_score"
+    - "score_std"
+    - "margin_top1_top2"
+    - "score_range"
+    - "max_similarity"
+    - "mean_redundancy"
+  k: 5
+  leakage_prohibited: ["gold_answer", "supporting_facts", "gold_doc_ids", "f1_score"]
